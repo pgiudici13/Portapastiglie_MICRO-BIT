@@ -1,0 +1,420 @@
+/* Reset base per consistenza tra browser */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Variabili colore per mantenere palette coerente */
+:root {
+  --bg: #070b14;
+  --surface: #10192a;
+  --surface-soft: #14223a;
+  --text: #edf2ff;
+  --muted: #a8b4cf;
+  --primary: #63b3ff;
+  --secondary: #8a7dff;
+  --accent: #43f0c2;
+  --border: rgba(255, 255, 255, 0.12);
+  --shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+/* Stile globale del body */
+body {
+  font-family: "Inter", "Segoe UI", sans-serif;
+  background: radial-gradient(circle at 20% 0%, #142342, #070b14 45%);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Contenitore centrale per allineare i contenuti */
+.container {
+  width: min(1120px, 92%);
+  margin: 0 auto;
+}
+
+/* Spaziatura verticale standard delle sezioni */
+.section {
+  padding: 5.5rem 0;
+}
+
+/* Glow decorativo leggero nello sfondo */
+.bg-glow {
+  position: fixed;
+  width: 320px;
+  height: 320px;
+  border-radius: 999px;
+  filter: blur(70px);
+  z-index: -1;
+  opacity: 0.55;
+}
+
+/* Primo glow in alto a sinistra */
+.bg-glow-1 {
+  background: linear-gradient(45deg, var(--secondary), var(--primary));
+  top: -120px;
+  left: -60px;
+}
+
+/* Secondo glow in basso a destra */
+.bg-glow-2 {
+  background: linear-gradient(45deg, var(--accent), var(--primary));
+  bottom: -120px;
+  right: -80px;
+}
+
+/* Header sticky con effetto glass leggero */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  background: rgba(7, 11, 20, 0.65);
+  border-bottom: 1px solid var(--border);
+}
+
+/* Contenuto nav allineato in orizzontale */
+.nav-wrap {
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo testuale */
+.logo {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+/* Stile base bottoni riutilizzabile */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  text-decoration: none;
+  border-radius: 999px;
+  font-weight: 600;
+  padding: 0.75rem 1.25rem;
+  transition: transform 220ms ease, box-shadow 220ms ease, background 220ms ease;
+}
+
+/* Bottone primario con gradiente */
+.btn-primary {
+  color: #041021;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  box-shadow: 0 12px 24px rgba(67, 240, 194, 0.25);
+}
+
+/* Bottone outlined per secondaria */
+.btn-outline {
+  border: 1px solid var(--border);
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* Bottone ghost trasparente */
+.btn-ghost {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--text);
+  background: transparent;
+}
+
+/* Micro-interazione hover comune */
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Griglia hero con testo e mockup */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+/* Etichetta sopra il titolo principale */
+.eyebrow {
+  color: var(--accent);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+/* Titolo hero di grande impatto */
+.hero h1 {
+  font-size: clamp(2rem, 3.6vw, 3.6rem);
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+/* Testo intro hero */
+.lead {
+  color: var(--muted);
+  max-width: 60ch;
+  margin-bottom: 1.8rem;
+}
+
+/* Gruppo pulsanti hero */
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-bottom: 1.6rem;
+}
+
+/* Lista metriche hero */
+.hero-metrics {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  color: var(--muted);
+}
+
+/* Card visuale del mockup */
+.hero-card {
+  background: linear-gradient(160deg, rgba(138, 125, 255, 0.2), rgba(99, 179, 255, 0.12));
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+}
+
+/* Simulazione device con contrasto forte */
+.device-mockup {
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: #081021;
+  padding: 1rem;
+}
+
+/* Schermo interno del mockup */
+.device-screen {
+  border-radius: 14px;
+  background: linear-gradient(180deg, #0c1b35, #0a1222);
+  padding: 1rem;
+}
+
+/* Titolo interno mockup */
+.screen-title {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* Riga orario mockup */
+.screen-time {
+  margin: 0.5rem 0 0.75rem;
+  font-weight: 700;
+}
+
+/* Barra di progresso mockup */
+.screen-bar {
+  height: 10px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+/* Riempimento barra con gradiente */
+.screen-bar span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--secondary), var(--accent));
+}
+
+/* Larghezza statica del riempimento barra */
+.screen-bar-fill {
+  width: 72%;
+}
+
+/* Stato mockup */
+.screen-status {
+  color: var(--muted);
+  font-size: 0.88rem;
+  margin-top: 0.8rem;
+}
+
+/* Titoli sezione */
+h2 {
+  font-size: clamp(1.6rem, 2.6vw, 2.3rem);
+  margin-bottom: 1.2rem;
+}
+
+/* Griglia cards features */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+/* Card generica */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.2rem;
+  transition: transform 240ms ease, border-color 240ms ease;
+}
+
+/* Hover card con alzata leggera */
+.card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(99, 179, 255, 0.45);
+}
+
+/* Griglia step procedura */
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+/* Box singolo step */
+.step {
+  background: var(--surface-soft);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.2rem;
+}
+
+/* Numero step evidenziato */
+.step span {
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+/* Griglia sezione galleria */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+/* Card galleria con sfondo gradiente */
+.gallery-card {
+  min-height: 180px;
+  border-radius: 16px;
+  padding: 1.2rem;
+  border: 1px solid var(--border);
+  background: linear-gradient(160deg, rgba(16, 25, 42, 0.95), rgba(20, 34, 58, 0.95));
+  transition: transform 240ms ease;
+}
+
+/* Hover galleria fluido */
+.gallery-card:hover {
+  transform: translateY(-3px) scale(1.01);
+}
+
+/* Griglia testimonianze */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* Box citazione */
+blockquote {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.2rem;
+  color: #dce6ff;
+}
+
+/* Riga autore testimonianza */
+cite {
+  display: block;
+  margin-top: 0.8rem;
+  color: var(--muted);
+  font-style: normal;
+  font-size: 0.92rem;
+}
+
+/* Blocco CTA finale ben evidente */
+.cta-box {
+  text-align: center;
+  background: linear-gradient(145deg, rgba(138, 125, 255, 0.2), rgba(67, 240, 194, 0.16));
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 2.2rem;
+}
+
+/* Footer con allineamento bilanciato */
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 1.2rem 0 1.8rem;
+}
+
+/* Contenuto footer */
+.footer-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  color: var(--muted);
+}
+
+/* Link footer */
+.footer-link {
+  color: var(--text);
+  text-decoration: none;
+}
+
+/* Classe reveal: stato iniziale nascosto */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 600ms ease, transform 600ms ease;
+}
+
+/* Classe attiva dopo ingresso viewport */
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Breakpoint tablet per ridurre colonne */
+@media (max-width: 900px) {
+  .hero-grid,
+  .cards-grid,
+  .steps-grid,
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Breakpoint mobile con layout verticale */
+@media (max-width: 640px) {
+  .section {
+    padding: 4.4rem 0;
+  }
+
+  .hero-grid,
+  .cards-grid,
+  .steps-grid,
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .nav-wrap {
+    min-height: 64px;
+  }
+
+  .footer-wrap {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
