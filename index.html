@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Titolo pagina visibile nel tab -->
-    <title>PortaPastiglie Smart - Landing Page</title>
+    <title>PortaPastiglie Micro:bit - Per i Nonni</title>
     <!-- Collegamento al file CSS principale -->
     <link rel="stylesheet" href="styles.css" />
   </head>
@@ -17,40 +17,41 @@
     <!-- Header con logo testuale e call to action rapida -->
     <header class="site-header">
       <div class="container nav-wrap">
-        <a href="#" class="logo">PortaPastiglie Smart</a>
-        <a href="#cta-finale" class="btn btn-outline">Prenota Demo</a>
+        <a href="#" class="logo">PortaPastiglie Micro:bit</a>
+        <a href="#cta-finale" class="btn btn-outline">Scopri il progetto</a>
       </div>
     </header>
 
-    <!-- Sezione Hero con messaggio forte e pulsanti principali -->
+    <!-- Sezione Hero con messaggio chiaro per i nonni -->
     <section class="hero section reveal">
       <div class="container hero-grid">
         <div class="hero-copy">
-          <p class="eyebrow">Tech Maker Edition</p>
-          <h1>La forma elegante del tuo promemoria quotidiano.</h1>
+          <p class="eyebrow">Progetto Sicuro e Semplice</p>
+          <h1>Il promemoria farmaci smart pensato per i nonni.</h1>
           <p class="lead">
-            Un portapastiglie smart progettato per chi ama precisione, design premium e
-            automazioni intelligenti: semplice da usare, bello da vedere.
+            Questo sistema aiuta a ricordare le medicine con segnali chiari: luce rossa,
+            suono di avviso e movimento meccanico. Tutto e progettato per essere immediato
+            e rassicurante nella vita quotidiana.
           </p>
           <div class="hero-actions">
-            <a href="#features" class="btn btn-primary">Scopri le funzioni</a>
-            <a href="#come-funziona" class="btn btn-ghost">Guarda come funziona</a>
+            <a href="#features" class="btn btn-primary">Vedi le funzioni</a>
+            <a href="#come-funziona" class="btn btn-ghost">Capisci come funziona</a>
           </div>
           <ul class="hero-metrics">
-            <li><strong>98%</strong> aderenza routine</li>
-            <li><strong>3 min</strong> setup iniziale</li>
-            <li><strong>24/7</strong> monitoraggio stato</li>
+            <li><strong>4</strong> strip LED NeoPixel</li>
+            <li><strong>1</strong> servo su P1</li>
+            <li><strong>9600</strong> baud via seriale</li>
           </ul>
         </div>
         <div class="hero-card">
           <div class="device-mockup">
             <div class="device-screen">
-              <p class="screen-title">Routine Oggi</p>
-              <p class="screen-time">18:30 - Vitamina D</p>
+              <p class="screen-title">Stato Sistema</p>
+              <p class="screen-time">Codice ricevuto da Arduino</p>
               <div class="screen-bar">
                 <span class="screen-bar-fill"></span>
               </div>
-              <p class="screen-status">Stato: pronto e sincronizzato</p>
+              <p class="screen-status">Output: LED posizione + allarme + servo</p>
             </div>
           </div>
         </div>
@@ -60,19 +61,28 @@
     <!-- Sezione Features con vantaggi principali -->
     <section id="features" class="section reveal">
       <div class="container">
-        <h2>Funzioni che fanno davvero la differenza</h2>
+        <h2>Funzioni principali del firmware</h2>
         <div class="cards-grid">
           <article class="card">
-            <h3>Alert Intelligenti</h3>
-            <p>Notifiche puntuali e personalizzabili, senza stress e senza confusione.</p>
+            <h3>Segnale Visivo Immediato</h3>
+            <p>
+              In base al codice ricevuto, si accende il LED rosso della posizione corretta
+              su una delle 4 strip.
+            </p>
           </article>
           <article class="card">
-            <h3>Design Professionale</h3>
-            <p>Linee pulite, materiali premium e interfaccia chiara per ogni eta.</p>
+            <h3>Allarme Sonoro + Movimento Servo</h3>
+            <p>
+              La routine `INFERMIERA()` avvia la melodia e porta il servo a 180 gradi per
+              richiamare l'attenzione.
+            </p>
           </article>
           <article class="card">
-            <h3>Sync Multi-Dispositivo</h3>
-            <p>Controllo da smartphone o desktop con storico delle assunzioni sempre ordinato.</p>
+            <h3>Reset Rapido</h3>
+            <p>
+              Con impulso su P2, il sistema pulisce i LED, ferma l'audio e riporta il servo a
+              0 gradi.
+            </p>
           </article>
         </div>
       </div>
@@ -81,61 +91,82 @@
     <!-- Sezione Come funziona con step semplici -->
     <section id="come-funziona" class="section reveal">
       <div class="container">
-        <h2>Come funziona</h2>
+        <h2>Come funziona (passo dopo passo)</h2>
         <div class="steps-grid">
           <div class="step">
             <span>01</span>
-            <h3>Configura</h3>
-            <p>Imposti orari e tipologia in pochi tap con procedura guidata.</p>
+            <h3>Arduino invia un codice</h3>
+            <p>Il Micro:bit riceve un byte via seriale su P2/P0 a 9600 baud.</p>
           </div>
           <div class="step">
             <span>02</span>
-            <h3>Sincronizza</h3>
-            <p>Il dispositivo allinea promemoria e stato in tempo reale.</p>
+            <h3>Il firmware decide l'azione</h3>
+            <p>Se il codice e valido, seleziona la strip giusta e la posizione LED corretta.</p>
           </div>
           <div class="step">
             <span>03</span>
-            <h3>Monitora</h3>
-            <p>Dashboard chiara con storico, report e reminder adattivi.</p>
+            <h3>Attiva gli avvisi</h3>
+            <p>Accende LED rossi, suona la melodia, muove il servo e accende LED attenzione.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Sezione Galleria con card mockup -->
+    <!-- Sezione mappa codici in ingresso -->
     <section class="section reveal">
       <div class="container">
-        <h2>Mockup e scenari d'uso</h2>
+        <h2>Mappa codici del programma</h2>
         <div class="gallery-grid">
           <div class="gallery-card">
-            <h3>Scrivania Tech</h3>
-            <p>Setup minimal con luce ambiente e reminder discreti.</p>
+            <h3>Codici 1..7</h3>
+            <p>LED su strip P13 (indice 1..7).</p>
           </div>
           <div class="gallery-card">
-            <h3>Modalita Viaggio</h3>
-            <p>Case compatto e notifiche ottimizzate per routine fuori casa.</p>
+            <h3>Codici 8..28</h3>
+            <p>Distribuzione sulle strip P14, P15 e P16 in ordine.</p>
           </div>
           <div class="gallery-card">
-            <h3>Versione Family</h3>
-            <p>Profili multipli per gestire piu persone da un unico pannello.</p>
+            <h3>Codice 29 e codici errati</h3>
+            <p>29: rainbow su tutte le strip. Altro: X sul display per 5 secondi.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Sezione testimonianze per fiducia -->
+    <!-- Sezione componenti hardware reali -->
     <section class="section reveal">
       <div class="container">
-        <h2>Cosa dicono i maker e i professionisti</h2>
+        <h2>Componenti hardware usati</h2>
         <div class="testimonials-grid">
           <blockquote>
-            "Finalmente un prodotto utile e bellissimo. Il setup e stato immediato."
-            <cite>- Giulia, Product Designer</cite>
+            "Micro:bit + Arduino: il controller invia i codici, il firmware gestisce la logica."
+            <cite>- Controllo e comunicazione</cite>
           </blockquote>
           <blockquote>
-            "Lo consiglio: interfaccia pulita, promemoria precisi, zero frizioni."
-            <cite>- Marco, CTO Health Startup</cite>
+            "Servo su P1, NeoPixel su P13/P14/P15/P16, reset via impulso su P2."
+            <cite>- Attuazione e segnalazione</cite>
           </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sezione criticita e miglioramenti consigliati -->
+    <section class="section reveal">
+      <div class="container">
+        <h2>Affidabilita: cosa migliorare</h2>
+        <div class="cards-grid">
+          <article class="card">
+            <h3>Pin P2 in conflitto</h3>
+            <p>P2 e usato sia per seriale che per reset impulsivo: conviene separarli.</p>
+          </article>
+          <article class="card">
+            <h3>LED attenzione fuori indice</h3>
+            <p>La strip da 8 LED ha indici 0..7, ma il codice usa 8.</p>
+          </article>
+          <article class="card">
+            <h3>Errore bloccante</h3>
+            <p>La pausa da 5 secondi puo rallentare la reazione del sistema ai nuovi codici.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -143,19 +174,19 @@
     <!-- Sezione CTA finale con invito all'azione -->
     <section id="cta-finale" class="section reveal">
       <div class="container cta-box">
-        <h2>Porta il tuo progetto smart al livello successivo.</h2>
+        <h2>Un progetto utile per la serenita dei nonni.</h2>
         <p>
-          Richiedi una demo e scopri come integrare design premium e routine affidabili in
-          un unico dispositivo.
+          Questo prototipo e pensato per offrire promemoria chiari e affidabili a casa.
+          Prossimo passo consigliato: migliorare robustezza e usabilita prima dell'uso reale.
         </p>
-        <a href="#" class="btn btn-primary">Richiedi una demo adesso</a>
+        <a href="#" class="btn btn-primary">Leggi il firmware e i prossimi step</a>
       </div>
     </section>
 
     <!-- Footer con note finali -->
     <footer class="site-footer">
       <div class="container footer-wrap">
-        <p>2026 PortaPastiglie Smart. Tutti i diritti riservati.</p>
+        <p>2026 PortaPastiglie Micro:bit - Documentazione progetto.</p>
         <a href="#" class="footer-link">Contatti</a>
       </div>
     </footer>
